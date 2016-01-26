@@ -1,6 +1,4 @@
 
-console.log("hello");
-
 function make_base_auth(user, password) {
     var tok = user + ':' + password;
     var hash = btoa(tok);
@@ -8,8 +6,6 @@ function make_base_auth(user, password) {
 }
 
 function get_token(callback) {
-
-
     $.ajax
     ({
         type: "POST",
@@ -27,9 +23,7 @@ function get_token(callback) {
         }
     });
 
-
 }
-
 
 function initMap(){
 
@@ -55,7 +49,7 @@ function initMap(){
 
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 10,
-                    center: new google.maps.LatLng(-33.92, 151.25),
+                    center: new google.maps.LatLng(52.54493660551252, 13.299623261996308),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
 
@@ -68,9 +62,9 @@ function initMap(){
                         position: new google.maps.LatLng(e[i].lat, e[i].long),
                         map: map
                     });
-                    google.maps.event.addListener(marker, 'click', (function(marker, i,e) {
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
                         return function() {
-                            infowindow.setContent(e[i].id);
+                            infowindow.setContent(JSON.stringify(e[i].id));
                             infowindow.open(map, marker);
                         }
                     })(marker, i));
@@ -85,11 +79,9 @@ function initMap(){
             }
 
         });
-
-
+        
 
     })
 }
 
-//initMap()
 
